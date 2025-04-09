@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, Routes, Route } from "react-router-dom"; // No need to import Router
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faBell } from '@fortawesome/free-solid-svg-icons'; 
+import { Link, Routes, Route } from "react-router-dom"; 
 import AccountSection from "../components/AccountSection";
 import AddExpenses from "../components/AddExpenses";
 import BudgetAndExpensesPage from "../pages/BudgetAndExpensesPage";
@@ -21,22 +23,27 @@ function Dashboard() {
       <div className="w-full max-w-[1400px] px-4">
         {/* Navbar */}
         <nav className="bg-custom-yellow p-4 flex items-center justify-between shadow-md">
+          {/* Left Section - Menu Icon and Home Title */}
           <div className="flex items-center space-x-4">
-            <i className="fa fa-bars text-white w-6 h-6 cursor-pointer" />
+            {/* Menu Icon - Updated */}
+            <FontAwesomeIcon icon={faBars} className="text-white w-6 h-6 cursor-pointer" />
+            {/* Home Title */}
             <h1 className="text-white text-lg sm:text-xl font-bold">Home</h1>
           </div>
+
+          {/* Right Section - Notification Icon - Updated */}
           <div>
-            <i className="fa fa-bell text-white w-6 h-6 cursor-pointer" />
+            <FontAwesomeIcon icon={faBell} className="text-white w-6 h-6 cursor-pointer" />
           </div>
         </nav>
 
         {/* Navbar sections (Accounts, Budgets & Expenses, Currency Converter) */}
         <div className="bg-custom-yellow p-4 flex sm:flex-col sm:space-y-4 md:flex-row md:space-x-8 justify-between items-center">
-          <Link to="/" className="text-white cursor-pointer hover:font-bold text-gray-200">
+          <Link to="/dashboard" className="text-white cursor-pointer hover:font-bold text-gray-200">
             Accounts
           </Link>
           <Link
-            to="/budget-and-expenses"
+            to="/dashboard/budget-and-expenses"
             className="text-white cursor-pointer hover:font-bold text-gray-200"
           >
             Budgets & Expenses

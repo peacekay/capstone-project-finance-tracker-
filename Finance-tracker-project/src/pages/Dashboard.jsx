@@ -6,6 +6,7 @@ import AccountSection from "../components/AccountSection";
 import AddExpenses from "../components/AddExpenses";
 import BudgetAndExpensesPage from "../pages/BudgetAndExpensesPage";
 import CurrencyConverterPage from "../pages/CurrencyConverterPage";
+import Navbar from "../components/Navbar";
 
 function Dashboard() {
   const [accounts, setAccounts] = useState([]);
@@ -22,28 +23,9 @@ function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-300 flex justify-center">
       <div className="w-full max-w-[1400px] px-4">
+      <Navbar hideMenu/>
         {/* Navbar */}
-        <nav className="bg-custom-yellow p-4 flex items-center justify-between shadow-md">
-          {/* Left Section - Menu Icon and Home Title */}
-          <div className="flex items-center space-x-4">
-            {/* Menu Icon - Updated */}
-            <FontAwesomeIcon
-              icon={faBars}
-              className="text-white w-6 h-6 cursor-pointer"
-            />
-            {/* Home Title */}
-            <h1 className="text-white text-lg sm:text-xl font-bold">Home</h1>
-          </div>
-
-          {/* Right Section - Notification Icon - Updated */}
-          <div>
-            <FontAwesomeIcon
-              icon={faBell}
-              className="text-white w-6 h-6 cursor-pointer"
-            />
-          </div>
-        </nav>
-
+        
         {/* Navbar sections (Accounts, Budgets & Expenses, Currency Converter) */}
         <div className="bg-custom-yellow p-4 flex sm:flex-col sm:space-y-4 md:flex-row md:space-x-8 justify-between items-center">
           <Link

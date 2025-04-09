@@ -3,6 +3,7 @@ import HomePage from "./components/HomePage";
 import Dashboard from './pages/Dashboard';
 import LoginPage from './pages/LoginPage';
 import CreateAccountPage from './pages/CreateAccountPage';
+import CurrencyConverterPage from './pages/CurrencyConverterPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path='/create' element={<CreateAccountPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path='/currency-converter' element={<CurrencyConverterPage/>} />
       </Routes>
     </Router>
   );

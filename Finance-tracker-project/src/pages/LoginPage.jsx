@@ -99,7 +99,7 @@ function LoginPage() {
                 id="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full bg-gray-100 py-2 outline-none"
+                className="w-full bg-gray-100 py-2 outline-none text-custom-blue"
                 placeholder="Enter your password"
               />
             </div>

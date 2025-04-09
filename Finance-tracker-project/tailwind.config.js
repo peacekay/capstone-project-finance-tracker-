@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {
         'custom-yellow': '#E49B0F',
-        'custom-blue': '#000435'
+        'custom-blue': '#000435',
+        'custom-torquise': '#40E0D0'
       },
     },
   },

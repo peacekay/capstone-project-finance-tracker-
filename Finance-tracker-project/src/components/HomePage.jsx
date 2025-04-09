@@ -1,55 +1,42 @@
-import "font-awesome/css/font-awesome.min.css";
-import React from "react";
+// src/pages/Dashboard.jsx
+import React, { useState, useEffect } from 'react';
+import Balance from './Balance';
+import IncomeExpense from './IncomeExpense';
+import TransactionList from './TransactionList';
 
-function HomePage() {
+const HomePage = () => {
+  const [transactions, setTransactions] = useState([]);
+
+  // Dummy data for transactions (will eventually come from an API)
+  useEffect(() => {
+    const sampleTransactions = [
+      { id: 1, type: 'income', amount: 2000, description: 'Salary' },
+      { id: 2, type: 'expense', amount: 150, description: 'Groceries' },
+      { id: 3, type: 'expense', amount: 50, description: 'Transport' },
+    ];
+
+    setTransactions(sampleTransactions);
+  }, []);
+
+  // Calculate total income, expenses, and balance
+  const totalIncome = transactions
+    .filter((transaction) => transaction.type === 'income')
+    .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+  const totalExpense = transactions
+    .filter((transaction) => transaction.type === 'expense')
+    .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+  const balance = totalIncome - totalExpense;
+
   return (
-    <div className="min-h-screen bg-gray-300 flex justify-center items-center">
-      {/* Main container */}
-      <div className="w-full max-w-[1400px] px-4">
-        {/* Navbar */}
-        <nav className="bg-custom-yellow p-4 flex items-center justify-between shadow-md">
-          {/* Left Section - Menu Icon and Home Title */}
-          <div className="flex items-center space-x-4">
-            <i className="fa fa-bars text-white w-6 h-6 cursor-pointer" />
-            <h1 className="text-white text-lg sm:text-xl font-bold">Home</h1>
-          </div>
-
-          {/* Right Section - Notification Icon */}
-          <div>
-            <i className="fa fa-bell text-white w-6 h-6 cursor-pointer" />
-          </div>
-        </nav>
-
-        {/* Navbar sections (Accounts, Budgets & Expenses, Currency Converter) */}
-        <div className="bg-custom-yellow p-4 flex sm:flex-col sm:space-y-4 md:flex-row md:space-x-8 justify-between items-center">
-          <div className="text-white cursor-pointer hover:font-bold text-gray-200">Accounts</div>
-          <div className="text-white cursor-pointer hover:font-bold text-gray-200">Budgets & Expenses</div>
-          <div className="text-white cursor-pointer hover:font-bold text-gray-200">Currency Converter</div>
-        </div>
-
-        {/* Main content */}
-        <div className="p-4 space-y-6">
-          {/* Accounts Section */}
-          <section className="bg-white shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 hover:shadow-xl">
-            <h2 className="text-xl font-bold mb-2">Accounts</h2>
-            <p>Details about accounts will go here. Click to see more.</p>
-          </section>
-
-          {/* Budgets & Expenses Section */}
-          <section className="bg-white shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 hover:shadow-xl">
-            <h2 className="text-xl font-bold mb-2">Budgets & Expenses</h2>
-            <p>Details about budgets and expenses will go here. Click to see more.</p>
-          </section>
-
-          {/* Track Savings Section */}
-          <section className="bg-white shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 hover:shadow-xl">
-            <h2 className="text-xl font-bold mb-2">Track Savings</h2>
-            <p>Details about savings tracking will go here. Click to see more.</p>
-          </section>
-        </div>
-      </div>
+    <div className="p-6">
+      <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+      <Balance balance={balance} />
+      <IncomeExpense totalIncome={totalIncome} totalExpense={totalExpense} />
+      <TransactionList transactions={transactions} />
     </div>
   );
-}
+};
 
 export default HomePage;

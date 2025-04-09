@@ -17,8 +17,8 @@ const HomePage = () => {
           Start Tracking
         </button>
         <button className="mt-6 bg-custom-yellow p-2 rounded-lg">
-        <a href="/login" className="text-white hover: text-custom-blue text-bold ">
-              Login here
+        <a href="/Create" className="text-white hover: text-custom-blue text-bold ">
+              Join Us
             </a>
         </button>
         </div>
